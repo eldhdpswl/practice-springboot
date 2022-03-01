@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>View Profile</title>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+
+</head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Occupation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <c:forEach items="${profiles}" var="profile">
+                    <tr>
+                        <td>${profile.name}</td>
+                        <td>${profile.age}</td>
+                        <td>${profile.occupation}</td>
+                    </tr>
+                </c:forEach> -->
+                <!-- 
+                    thymeleaf는 엘러멘트에 직접적으로 작동하게 된다.
+                    th는 맨위에 xmlns:th="http://www.thymeleaf.org" 의 th이다.
+                 -->
+                <tr th:each="profile: ${profiles}">
+                    <td th:text="${profile.name}" >
+                    <td th:text="${profile.age}" >
+                    <td th:text="${profile.occupation}" >
+                </tr>
+            </tbody>
+
+        </table>
+
+    </body>
+</html>

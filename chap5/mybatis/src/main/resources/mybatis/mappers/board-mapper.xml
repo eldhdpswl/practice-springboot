@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.eldhdpswl.mybatis.mapper.BoardMapper">
+    <insert id="createBoard"
+            useGeneratedKeys="true"
+            keyProperty="id"
+            parameterType="dev.eldhdpswl.mybatis.dto.BoardDto"
+    >
+        insert into board(name) values (#{name})
+    </insert>
+</mapper>
+<!--
+    useGeneratedKeys="true" 이렇게 되었을떄 데이터베이스에서 만들어준 id값을 지정을 해주는데,
+    keyProperty 여기에 그 값을 넣어준다.
+-->

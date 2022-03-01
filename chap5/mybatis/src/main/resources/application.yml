@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3307/demo_schema
+    username: demo_user
+    password: likelion123demo_user
+#    username: root
+#    password: likelion123
+
+mybatis:
+  mapper-locations: "classpath:mybatis/mappers/*.xml"
+  configuration:
+    # 아래 설정이 있으면 자바에서 일상적으로 사용하는 camel-case 대로 사용을 하더라도 mybatis에서 자동적으로 전달을 할떄 underscore(snake case로 전달을 해준다.)
+    # 데이터 자체의 내용물을 변환시키는 것이 아니라 컬럼의 이름과 같은 인자로서 활용이 되는 것 등 테이블 컬럼의 결과물이 underscore로  나오게 된다면 그걸 camel case로 변환을 해서 자바와 연결을 해준다.
+    map-underscore-to-camel-case: true
