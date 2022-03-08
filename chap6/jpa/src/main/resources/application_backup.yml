@@ -1,0 +1,49 @@
+# 싷행순서
+#  맨처음 순서는 application.yml 에서 active가 local이면  local인지 확인을 한다.
+#  같은 resources 파일의 yml파일을 찾으면서 local에 해당되는 환경을 실행한다. local에 해당되는 환경은
+#  application-local.yml파일의 환경이어서 이 환경을 실행한다.
+#  test일떄는 application-test.yml을 실행한다.
+
+### 어떤 profiles을 사용해서 어플리케이션을 실행할지를(active) 보여준다.
+#spring:
+#  profiles:
+#    active: local   #local, test 에 따라서 밑의 db환경이 다르게 실행된다.
+###
+#---
+#### 현제 profile이 local일떄 실행하는 설정이다.
+#Spring:
+#  config:   # 설정
+#    activate:   # 실행
+#      on-profile: local  #profile일떄
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3307/demo_jpa_schema
+#    username: demo_jpa
+#    password: likelion123demo_jpa
+#  jpa:
+#    hibernate:
+#      # 테스트한 내용을 남겨놓고 싶으면 update 또는 none
+#      ddl-auto: none # test를 위해 create했음, 보통은 none을 함
+#    show-sql: false  # 실제로 Query문이 작동될떄 로그상 보여주기
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect # mysql 사용을 hibernate에게 알려준다.
+#---
+#### 현제 profile이 test일떄 실행하는 설정이다.
+#Spring:
+#  config:   # 설정
+#    activate:   # 실행
+#      on-profile: test  #profile일떄
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password: password
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.H2Dialect
+

@@ -1,0 +1,27 @@
+### 현제 profile이 test일떄 실행하는 설정이다.
+Spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+# 아래 logging config 설정을 주면 특정한 파일(classpath:logback-spring-test.xml)을 줌으로써
+# 로그 설정을 분리할수 있다.
+logging:
+  config: classpath:logback-spring-test.xml
+
+custom:
+  property:
+    single: test-property
+
+
+
+

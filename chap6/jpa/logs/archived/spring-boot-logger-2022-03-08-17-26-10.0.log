@@ -1,0 +1,2 @@
+2022-03-08 17:26:10,509 INFO StartupInfoLogger [main] Starting JpaApplication using Java 15.0.2 on DESKTOP-3E8S7R9 with PID 8692 (C:\workspace\projectlion\chap6\6-3\jpa\build\classes\java\main started by shin dong keum in C:\workspace\projectlion\chap6\6-3\jpa)
+2022-03-08 17:26:10,540 INFO SpringApplication [main] The following 1 profile is active: "test"
