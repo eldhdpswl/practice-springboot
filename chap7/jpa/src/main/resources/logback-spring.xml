@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- xml에서 사용하기 위한 특정 값을 선언하는 것 -->
+    <property name="LOGS" value="./logs" />
+
+    <!-- Console 이라는 변수에 appender 인터페이스를 계속 적용해준다. -->
+    <appender name="Console"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout"> <!-- 메시지가 어떤 페턴으로 적용될지 결정 -->
+            <Pattern>
+                %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{0}): %msg%n%throwable
+            </Pattern>
+        </layout>
+    </appender>
+
+    <!-- 기본적으로 파일에 출력을 한다. -->
+    <appender name="RollingFile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <!-- ${LOGS}의 값은  <property name="LOGS" value="./logs" /> 에서 ./logs 가 출력된다. -->
+        <file>${LOGS}/spring-boot-logger.log</file>
+        <encoder
+                class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!-- 어떠한 형식을 출력하는지에 대한 설정  -->
+            <Pattern>%d %p %C{0} [%t] %m%n</Pattern>
+        </encoder>
+
+        <!--
+            일정한 규칙을 가지고 파일을 생성을 해서 이전에 작성되었던 log를 해당하는 파일로 옮겨받고 실제 돌아가고 있는 로그파일은 비워준다.
+            즉 어떤 규칙을 가지고 log를 돌리면서 백업을 하고 백업내용을 지우고 할것인지에 대한 정의
+         -->
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/spring-boot-logger-%d{yyyy-MM-dd-HH-mm}.%i.log
+            </fileNamePattern>
+            <!-- 하나의 파일이 도달할 수 있는 양, 파일의 한계
+                즉 <fileNamePattern>${LOGS}/archived/spring-boot-logger-%d{yyyy-MM-dd-HH-mm}.%i.log 부분에서 %i.log가
+                나타내는 부분은 예를들어, 10.0.log 파일이 100mb가 넘어가면 끊고 10.1.log로 생성해서 작성한다.
+             -->
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>5</maxHistory>  <!-- archived에 들어갈 로그의 파일의 갯수 -->
+            <totalSizeCap>20GB</totalSizeCap>  <!-- 모든 로그파일들의 최대 사이즈 -->
+        </rollingPolicy>
+    </appender>
+
+    <!-- 모든 패키지(전체 어플리케이션) level 설정 -->
+    <root level="warn">
+        <!-- appender-ref 는 이 설정에서 어떤 appender를 사용을 할지에 대한 것 -->
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="Console" />
+    </root>
+
+
+    <!-- 패키지명을 기준으로 log 레벨을 설정한다
+
+        additivity은 root에는 존재하지 않는 속성이다. root log와 별개로 작동할것인지에 대한 속성으로
+        additivity가 true일 경우, root에서 출력하도록 되어있는 것과 아래 logger name="dev.aquashdw" 에서 출력하도록 되어있는 것이
+        중복이 되어있다면 2번 출력이된다. 그래서 additivity="false"로 두어야된다.
+    -->
+    <logger name="dev.eldhdpswl.jpa.aspect" level="trace" additivity="false">
+        <!-- appender-ref 는 이 설정에서 어떤 appender를 사용을 할지에 대한 것 -->
+        <appender-ref ref="RollingFile" />
+        <appender-ref ref="Console" />
+    </logger>
+
+</configuration>

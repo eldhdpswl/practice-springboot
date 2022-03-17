@@ -1,0 +1,2 @@
+2022-03-11 21:34:37,632 DEBUG PostExceptionResolver [http-nio-8080-exec-2] class dev.eldhdpswl.jpa.exception.PostNotExistException
+2022-03-11 21:34:37,849 DEBUG AbstractHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [dev.eldhdpswl.jpa.exception.PostNotExistException: target post does not exist]
