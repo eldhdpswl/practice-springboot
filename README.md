@@ -60,5 +60,17 @@
 - OAuth2 서버 만들어보기 (심화)
 
 ## chap 9
+- RabbitMQ
+- Message Broker 활용
+- Redis
+- WebSocket
+- WebClient
+- 미션 해설 영상 1
 
 ## chap 10
+- Spring Cloud
+- Micro Service Architecture
+- Spring Cloud Gateway
+- Spring Cloud Config
+
+
