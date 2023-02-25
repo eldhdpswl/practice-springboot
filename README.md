@@ -3,7 +3,7 @@
 
 ### The Origin: Java Spring Boot
 
-> **Project Duration** : 2022.01.26 ~ 
+> **Project Duration** : 2022.01.26 ~ 2022.04.30
 
 ## chap 1
 - Intro
